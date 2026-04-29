@@ -7,6 +7,10 @@ type GameState = {
 
 export class gameHilow {
 	async gameInit() {
+		if (localStorage.getItem('gameState')) {
+			console.log('Game already initialized');
+			return;
+		}
 		let secretNumber = await this.getRandomNumber();
 		let gameState: GameState = {
 			secretNumber,
@@ -17,7 +21,9 @@ export class gameHilow {
 		console.log('Game initialized with secret number:', secretNumber);
 	}
 
-	async gameReset() {}
+	async gameReset() {
+		localStorage.removeItem('gameState');
+	}
 
 	async getRandomNumber() {
 		let difficulty = localStorage.getItem('difficulty') || 'easy';
@@ -31,7 +37,7 @@ export class gameHilow {
 		return Math.floor(Math.random() * max) + 1;
 	}
 
-	async makeGuess(guess: number) {
+	makeGuess(guess: number) {
 		let gameStateStr = localStorage.getItem('gameState');
 		if (!gameStateStr) {
 			throw new Error('Game not initialized');
@@ -54,6 +60,8 @@ export class gameHilow {
 				message: 'Too high! Try again.'
 			};
 		} else {
+			this.gameReset();
+			this.gameInit();
 			return {
 				isTrue: true,
 				message: `Congratulations! You've guessed the number in ${gameState.attempts} attempts.`

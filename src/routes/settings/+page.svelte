@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Card from '$lib/components/Card.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import difficulty from '$lib/assets/difficulty.svg';
@@ -6,19 +6,25 @@
 	import sound from '$lib/assets/sound.svg';
 	import trash from '$lib/assets/trash.svg';
 	import { onMount } from 'svelte';
+	import { gameHilow } from '$lib/utils/game.logic';
 
 	let selectedDifficulty = $state(localStorage.getItem('difficulty') || 'easy');
 
 	let sound_data = $state(false);
 	let dark_mode = $state(false);
 
+	let game = new gameHilow();
+
 	onMount(() => {
 		selectedDifficulty = localStorage.getItem('difficulty') ?? 'easy';
 	});
 
-	$effect(() => {
+	function saveDifficulty(input: string) {
+		selectedDifficulty = input;
 		localStorage.setItem('difficulty', selectedDifficulty);
-	});
+		// window.alert(`Difficulty set to ${selectedDifficulty}`);
+		game.gameReset();
+	}
 </script>
 
 <div class="min-h-100vh mx-auto w-full max-w-3xl pt-16 pb-20">
@@ -41,7 +47,7 @@
 				<div class="mt-4 flex flex-row gap-6">
 					<button
 						onclick={() => {
-							selectedDifficulty = 'easy';
+							saveDifficulty('easy');
 						}}
 						class="flex flex-1"
 					>
@@ -58,7 +64,7 @@
 
 					<button
 						onclick={() => {
-							selectedDifficulty = 'medium';
+							saveDifficulty('medium');
 						}}
 						class="flex flex-1"
 					>
@@ -75,7 +81,7 @@
 
 					<button
 						onclick={() => {
-							selectedDifficulty = 'hard';
+							saveDifficulty('hard');
 						}}
 						class="flex flex-1"
 					>

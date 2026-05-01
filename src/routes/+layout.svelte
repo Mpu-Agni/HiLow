@@ -5,6 +5,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 
 	let { children } = $props();
+	export const ssr = false;
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>

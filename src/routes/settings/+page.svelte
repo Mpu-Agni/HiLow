@@ -7,17 +7,39 @@
 	import trash from '$lib/assets/trash.svg';
 	import { onMount } from 'svelte';
 	import { gameHilow } from '$lib/utils/game.logic';
-
+	import ModalDeleteHistory from '$lib/components/ModalDeleteHistory.svelte';
+	import ModalSuccessDeleteHistory from '$lib/components/ModalSuccessDeleteHistory.svelte';
 	let selectedDifficulty = $state(localStorage.getItem('difficulty') || 'easy');
 
 	let sound_data = $state(false);
 	let dark_mode = $state(false);
 
 	let game = new gameHilow();
+	let showDeleteModal = $state(false);
+	let showDeleteSuccessModal = $state(false);
 
 	onMount(() => {
 		selectedDifficulty = localStorage.getItem('difficulty') ?? 'easy';
 	});
+
+	function openDeleteModal() {
+		showDeleteModal = true;
+	}
+
+	function cancelDelete() {
+		showDeleteModal = false;
+	}
+
+	function confirmDelete() {
+		// game.clearHistory();
+		game.deleteAllHistory();
+		showDeleteModal = false;
+		showDeleteSuccessModal = true;
+	}
+
+	function closeSuccessModal() {
+		showDeleteSuccessModal = false;
+	}
 
 	function saveDifficulty(input: string) {
 		selectedDifficulty = input;
@@ -134,12 +156,7 @@
 		</div>
 
 		<div class="mt-16">
-			<button
-				onclick={() => {
-					window.alert('yakin mau hapus?');
-				}}
-				class="w-full"
-			>
+			<button onclick={openDeleteModal} class="w-full">
 				<Card class="border border-red-300">
 					<div class="flex items-center justify-center gap-2">
 						<img src={trash} alt="" class="h-8 w-8" />
@@ -150,3 +167,13 @@
 		</div>
 	</div>
 </div>
+
+{#if showDeleteModal}
+	<ModalDeleteHistory cancelButton={cancelDelete} deleteButton={confirmDelete} />
+{/if}
+
+<!-- <ModalDeleteHistory cancelButton={cancelDelete} deleteButton={cancelDelete} /> -->
+{#if showDeleteSuccessModal}
+	<ModalSuccessDeleteHistory close={closeSuccessModal} />
+{/if}
+<!-- <ModalSuccessDeleteHistory close={closeSuccessModal} /> -->

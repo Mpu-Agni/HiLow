@@ -1,0 +1,1 @@
+import{F as e,S as t,X as n,a as r,b as i,c as a,h as o,i as s}from"./nJ_grmZF.js";import"./CFKVnMbq.js";var c=t(`<div><!></div>`);function l(t,l){let u=s(l,`class`,3,``),d=r(l,[`$$slots`,`$$events`,`$$legacy`,`children`,`class`]);var f=c();a(f,()=>({class:`rounded-2xl p-8 ${u()}`,...d})),o(e(f),()=>l.children),n(f),i(t,f)}export{l as t};

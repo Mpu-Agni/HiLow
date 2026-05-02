@@ -18,8 +18,8 @@
 	});
 </script>
 
-<div class="min-100-vh mx-auto w-full max-w-3xl pt-16 pb-20">
-	<div class="mt-8 flex flex-col gap-2">
+<div class="min-h-100vh mx-auto mt-8 w-full max-w-3xl pt-16 pb-20">
+	<div class="flex flex-col gap-2">
 		<h1 class="text-4xl font-bold">History</h1>
 		<p class="text-2xl text-gray-700">Your recent game performance</p>
 	</div>

@@ -50,7 +50,7 @@
 </script>
 
 <div class="min-h-100vh mx-auto w-full max-w-3xl pt-16 pb-20">
-	<div class="mx-8 mt-6">
+	<div class="mt-8">
 		<div>
 			<h1 class="text-4xl font-semibold text-gray-800">Game Preferences</h1>
 			<p class="mt-2 text-xl">Customize your gaming experience with calm precision.</p>
@@ -66,62 +66,47 @@
 					<h2 class="text-2xl font-semibold text-gray-700">Difficulty Level</h2>
 				</div>
 
-				<div class="mt-4 flex flex-row gap-6">
-					<button
-						onclick={() => {
-							saveDifficulty('easy');
-						}}
-						class="flex flex-1"
-					>
+				<div class="mt-4 grid grid-cols-1 gap-4 rounded-2xl sm:grid-cols-2 md:grid-cols-3">
+					<button onclick={() => saveDifficulty('easy')} class="w-full">
 						<Card
-							class="flex flex-1 flex-col items-center justify-center border-4 {selectedDifficulty ===
-							'easy'
+							class="flex flex-col items-center justify-center border-4 p-4 transition-all duration-200
+			{selectedDifficulty === 'easy'
 								? 'border-blue-500 bg-blue-50 text-blue-700'
 								: 'border-gray-300 text-gray-500'}"
 						>
-							<h3 class="text-2xl font-semibold">Easy</h3>
-							<p class="mt-2 text-xl font-semibold">0 - 100</p>
+							<h3 class="text-xl font-semibold">Easy</h3>
+							<p class="mt-1 text-sm">0 - 100</p>
 						</Card>
 					</button>
 
-					<button
-						onclick={() => {
-							saveDifficulty('medium');
-						}}
-						class="flex flex-1"
-					>
+					<button onclick={() => saveDifficulty('medium')} class="w-full">
 						<Card
-							class="flex flex-1 flex-col items-center justify-center border-4 {selectedDifficulty ===
-							'medium'
+							class="flex flex-col items-center justify-center border-4 p-4 transition-all duration-200
+			{selectedDifficulty === 'medium'
 								? 'border-blue-500 bg-blue-50 text-blue-700'
 								: 'border-gray-300 text-gray-500'}"
 						>
-							<h3 class="text-2xl font-semibold">Medium</h3>
-							<p class="mt-2 text-xl font-semibold">0 - 10.000</p>
+							<h3 class="text-xl font-semibold">Medium</h3>
+							<p class="mt-1 text-sm">0 - 10.000</p>
 						</Card>
 					</button>
 
-					<button
-						onclick={() => {
-							saveDifficulty('hard');
-						}}
-						class="flex flex-1"
-					>
+					<button onclick={() => saveDifficulty('hard')} class="w-full">
 						<Card
-							class="flex flex-1 flex-col items-center justify-center border-4 {selectedDifficulty ===
-							'hard'
+							class="flex flex-col items-center justify-center border-4 p-4 transition-all duration-200
+			{selectedDifficulty === 'hard'
 								? 'border-blue-500 bg-blue-50 text-blue-700'
 								: 'border-gray-300 text-gray-500'}"
 						>
-							<h3 class="text-2xl font-semibold">Hard</h3>
-							<p class="mt-2 text-xl font-semibold">0 - 1.000.000</p>
+							<h3 class="text-xl font-semibold">Hard</h3>
+							<p class="mt-1 text-sm">0 - 1.000.000</p>
 						</Card>
 					</button>
 				</div>
 			</Card>
 		</div>
 
-		<div class="mt-6">
+		<div class="mt-6 hidden">
 			<Card class="bg-white shadow">
 				<div class="flex flex-row items-center justify-between gap-4">
 					<div class="flex flex-row items-center gap-8">

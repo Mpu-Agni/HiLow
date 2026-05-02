@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Card from '$lib/components/Card.svelte';
 	import Button from '$lib/components/Button.svelte';
-	import difficulty from '$lib/assets/difficulty.svg';
+	import difficulty from '$lib/assets/Difficulty.svg';
 	import dark from '$lib/assets/dark.svg';
 	import sound from '$lib/assets/sound.svg';
 	import trash from '$lib/assets/trash.svg';
